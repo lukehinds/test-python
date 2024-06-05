@@ -2,12 +2,10 @@
 # help make automated releases for this project
 
 name: Release
-
 on:
   push:
     branches:
       - main
-
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
@@ -15,17 +13,17 @@ jobs:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-    - name: Install build dependencies
-      run: python -m pip install -U setuptools wheel build
-    - name: Build
-      run: python -m build .
-    - name: Publish
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        skip-existing: true
+      - name: Checkout
+        uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3
+      - name: Set up Python
+        uses: actions/setup-python@65d7f2d534ac1bc67fcd62888c5f4f3d2cb2b236 # v4
+        with:
+          python-version: '3.x'
+      - name: Install build dependencies
+        run: python -m pip install -U setuptools wheel build
+      - name: Build
+        run: python -m build .
+      - name: Publish
+        uses: pypa/gh-action-pypi-publish@81e9d935c883d0b210363ab89cf05f3894778450 # release/v1
+        with:
+          skip-existing: true

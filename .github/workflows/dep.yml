@@ -16,6 +16,7 @@ jobs:
         uses: stacklok/trusty-action@v0.0.7
         with:
           global_threshold: 5
+          fail_on_malicious: true
           provenance_threshold: 5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
